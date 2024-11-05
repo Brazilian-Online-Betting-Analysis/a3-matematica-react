@@ -1,13 +1,16 @@
-import { FeatureSection } from "./components/feature-section";
-import { Hero } from "./components/hero";
-import { Navbar } from "./components/navbar";
-import placeholder from "./assets/placeholder.jpg";
+import placeholder from "../assets/placeholder.jpg";
+import { Hero } from "@/components/hero";
+import { FeatureSection } from "@/components/feature-section";
+import { Helmet } from "react-helmet-async";
 
-function App() {
+export function Home() {
   return (
     <>
-      <header className="flex flex-col h-[600px] justify-between relative after:content-[' '] after:absolute after:inset-0 after:z-[-1] after:bg-hero-fade text-white background-hero-fade">
-        <Navbar />
+      <Helmet>
+        <title>Home</title>
+      </Helmet>
+
+      <header className="-mt-16 flex flex-col h-[600px] justify-between relative after:content-[' '] after:absolute after:inset-0 after:z-[-1] after:bg-hero-fade text-white background-hero-fade">
         <Hero />
       </header>
       <main className="flex flex-col gap-16 container mx-auto py-12">
@@ -44,5 +47,3 @@ function App() {
     </>
   );
 }
-
-export default App;

@@ -29,6 +29,11 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Loader2 } from "lucide-react";
+import {
+  saveProfileData,
+  type ProfileData,
+} from "@/services/save-profile-data";
+import { useNavigate } from "react-router-dom";
 
 const FormSchema = z.object({
   name: z.string().min(2, {
@@ -59,9 +64,19 @@ const FormSchema = z.object({
   monthlyIncome: z.string().min(1, {
     message: "Por favor, selecione uma faixa de renda mensal.",
   }),
+  bettingMonths: z.coerce
+    .number()
+    .min(1, {
+      message: "Por favor, informe há quantos meses você aposta.",
+    })
+    .max(600, {
+      message: "O valor máximo é 600 meses (50 anos).",
+    }),
 });
 
 export function BetFormDialog() {
+  const navigate = useNavigate();
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -71,11 +86,27 @@ export function BetFormDialog() {
       socialClass: "",
       bettingFrequency: 0,
       monthlyIncome: "",
+      bettingMonths: 0,
     },
   });
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
-    await new Promise((resolve) => setTimeout(resolve, 3000));
+    try {
+      const profileData: ProfileData = {
+        ...data,
+        expectedMonthlyLoss: Math.floor(Math.random() * 10000), // Random loss between 0-10000
+      };
+
+      saveProfileData(profileData);
+
+      await new Promise((resolve) => setTimeout(resolve, 3000));
+
+      navigate("/profile");
+
+      form.reset();
+    } catch (error) {
+      console.error("Error saving profile data:", error);
+    }
   }
 
   return (
@@ -259,6 +290,26 @@ export function BetFormDialog() {
                 )}
               />
             </div>
+            <FormField
+              control={form.control}
+              name="bettingMonths"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Tempo de Apostas</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="number"
+                      placeholder="Há quantos meses você aposta?"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormDescription>
+                    Informe há quantos meses você faz apostas regularmente.
+                  </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
             <DialogFooter>
               <Button type="submit">
                 {form.formState.isSubmitting && (
