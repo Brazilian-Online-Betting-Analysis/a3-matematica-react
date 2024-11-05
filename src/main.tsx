@@ -3,7 +3,6 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import {
   createBrowserRouter,
-  redirect,
   redirectDocument,
   RouterProvider,
 } from "react-router-dom";
