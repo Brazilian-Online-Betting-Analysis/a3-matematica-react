@@ -12,8 +12,11 @@ export const Navbar = () => {
           <NavLink href="/#como">Como?</NavLink>
         </li>
         <li>
-          <NavLink href="/#time">Nosso Time</NavLink>
+          <NavLink href="/#ods">ODS</NavLink>
         </li>
+        {/* <li>
+          <NavLink href="/#time">Nosso Time</NavLink>
+        </li> */}
       </ul>
     </nav>
   );

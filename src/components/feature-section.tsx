@@ -1,3 +1,5 @@
+import { cn } from "@/lib/utils";
+
 type FeatureSectionProps = {
   id: string;
   direction: "row" | "column";
@@ -6,6 +8,7 @@ type FeatureSectionProps = {
   description: string;
   image: string;
   shouldCentralizeText?: boolean;
+  imageWithShadow?: boolean;
 };
 
 export const FeatureSection = ({
@@ -16,15 +19,22 @@ export const FeatureSection = ({
   description,
   image,
   shouldCentralizeText = false,
+  imageWithShadow = false,
 }: FeatureSectionProps) => {
   return (
     <div
       id={id}
-      className={`flex items-center justify-between ${
+      className={cn(
+        "flex items-center justify-between relative z-10",
         direction === "column"
           ? "flex-col gap-12"
-          : "flex-col gap-12 md:gap-32 md:flex-row"
-      } ${isInverted ? (direction === "row" ? "flex-col-reverse md:flex-row-reverse" : "flex-col-reverse") : ""}`}
+          : "flex-col gap-12 md:gap-32 md:flex-row",
+        isInverted
+          ? direction === "row"
+            ? "flex-col-reverse md:flex-row-reverse"
+            : "flex-col-reverse"
+          : "",
+      )}
     >
       <div
         className={`text-content ${shouldCentralizeText ? "text-center" : ""} flex flex-col gap-4`}
@@ -32,7 +42,14 @@ export const FeatureSection = ({
         <h2 className="text-4xl">{title}</h2>
         <p>{description}</p>
       </div>
-      <img className="h-[300px] w-auto" src={image} alt={title} />
+      <img
+        className={cn(
+          "h-[300px] w-auto rounded-lg",
+          imageWithShadow && "shadow-lg",
+        )}
+        src={image}
+        alt={title}
+      />
     </div>
   );
 };
