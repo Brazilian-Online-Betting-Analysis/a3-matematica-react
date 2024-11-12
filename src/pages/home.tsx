@@ -20,7 +20,7 @@ export function Home() {
       <header className="-mt-16 flex flex-col h-[600px] justify-between relative after:content-[' '] after:absolute after:inset-0 after:z-[-1] after:bg-hero-fade text-white background-hero-fade">
         <Hero />
       </header>
-      <main className="flex flex-col gap-32 pb-[280px] pt-32">
+      <main className="flex flex-col gap-32 pb-[280px] pt-32 overflow-x-hidden">
         <div className="relative">
           <div className="container mx-auto">
             <FeatureSection

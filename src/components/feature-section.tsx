@@ -28,10 +28,10 @@ export const FeatureSection = ({
         "flex items-center justify-between relative z-10",
         direction === "column"
           ? "flex-col gap-12"
-          : "flex-col gap-12 md:gap-32 md:flex-row",
+          : "flex-col-reverse gap-12 lg:gap-32 lg:flex-row",
         isInverted
           ? direction === "row"
-            ? "flex-col-reverse md:flex-row-reverse"
+            ? "flex-col-reverse lg:flex-row-reverse"
             : "flex-col-reverse"
           : "",
       )}
