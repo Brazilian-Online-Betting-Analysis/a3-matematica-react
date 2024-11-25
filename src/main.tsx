@@ -1,15 +1,10 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import {
-  createBrowserRouter,
-  redirectDocument,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Home } from "./pages/home.tsx";
 import { Layout } from "./pages/layout.tsx";
-import { Profile } from "./pages/profile.tsx";
-import { getProfileData } from "./services/save-profile-data.ts";
+import { ResultPage } from "./pages/result/[resultId]/page.tsx";
 
 const router = createBrowserRouter([
   {
@@ -21,15 +16,8 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/profile",
-        element: <Profile />,
-        loader: () => {
-          const userData = getProfileData();
-          if (!userData) {
-            return redirectDocument("/");
-          }
-          return userData;
-        },
+        path: "/result/:resultId",
+        element: <ResultPage />,
       },
     ],
   },

@@ -29,30 +29,31 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Loader2 } from "lucide-react";
-import {
-  saveProfileData,
-  type ProfileData,
-} from "@/services/save-profile-data";
 import { useNavigate } from "react-router-dom";
+import { submitDataForAnalysis } from "@/services/submit-data-for-analysis";
 
-const FormSchema = z.object({
+export const FormSchema = z.object({
   name: z.string().min(2, {
     message: "O nome deve ter pelo menos 2 caracteres.",
   }),
   age: z.coerce
     .number()
-    .min(18, {
-      message: "Você deve ter pelo menos 18 anos.",
+    .min(1, {
+      message: "Idade é obrigatória.",
     })
     .max(100, {
       message: "Você deve ter no máximo 100 anos.",
     }),
-  gender: z.string().min(1, {
-    message: "Por favor, selecione um gênero.",
-  }),
-  socialClass: z.string().min(1, {
-    message: "Por favor, selecione uma classe social.",
-  }),
+  gender: z
+    .enum(["man", "woman"], {
+      message: "Por favor, selecione um gênero válido.",
+    })
+    .transform((value) => (value === "man" ? 1 : 2)),
+  socialClass: z
+    .enum(["a/b", "c", "d/e"], {
+      message: "Por favor, selecione uma classe social válida.",
+    })
+    .transform((value) => (value === "a/b" ? 1 : value === "c" ? 2 : 3)),
   bettingFrequency: z.coerce
     .number()
     .min(1, {
@@ -61,17 +62,9 @@ const FormSchema = z.object({
     .max(7, {
       message: "O máximo é 7 dias por semana.",
     }),
-  monthlyIncome: z.string().min(1, {
-    message: "Por favor, selecione uma faixa de renda mensal.",
+  monthlyIncome: z.coerce.number().min(0, {
+    message: "A renda mensal deve ser maior que zero.",
   }),
-  bettingMonths: z.coerce
-    .number()
-    .min(1, {
-      message: "Por favor, informe há quantos meses você aposta.",
-    })
-    .max(600, {
-      message: "O valor máximo é 600 meses (50 anos).",
-    }),
 });
 
 export function BetFormDialog() {
@@ -79,35 +72,18 @@ export function BetFormDialog() {
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
-    defaultValues: {
-      name: "",
-      age: 0,
-      gender: "",
-      socialClass: "",
-      bettingFrequency: 0,
-      monthlyIncome: "",
-      bettingMonths: 0,
-    },
   });
 
-  async function onSubmit(data: z.infer<typeof FormSchema>) {
+  const handleSubmit = form.handleSubmit(async (data) => {
     try {
-      const profileData: ProfileData = {
-        ...data,
-        expectedMonthlyLoss: Math.floor(Math.random() * 10000), // Random loss between 0-10000
-      };
+      const responseData = await submitDataForAnalysis(data);
 
-      saveProfileData(profileData);
-
-      await new Promise((resolve) => setTimeout(resolve, 3000));
-
-      navigate("/profile");
-
+      navigate(`/result/${responseData.id}`);
       form.reset();
     } catch (error) {
       console.error("Error saving profile data:", error);
     }
-  }
+  });
 
   return (
     <Dialog onOpenChange={() => form.reset()}>
@@ -134,7 +110,7 @@ export function BetFormDialog() {
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6">
             <FormField
               control={form.control}
               name="name"
@@ -175,15 +151,14 @@ export function BetFormDialog() {
                     <FormControl>
                       <Select
                         onValueChange={field.onChange}
-                        defaultValue={field.value}
+                        defaultValue={field.value?.toString()}
                       >
                         <SelectTrigger>
                           <SelectValue placeholder="Selecione seu gênero" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="masculino">Masculino</SelectItem>
-                          <SelectItem value="feminino">Feminino</SelectItem>
-                          <SelectItem value="outro">Outro</SelectItem>
+                          <SelectItem value="man">Masculino</SelectItem>
+                          <SelectItem value="woman">Feminino</SelectItem>
                         </SelectContent>
                       </Select>
                     </FormControl>
@@ -200,17 +175,15 @@ export function BetFormDialog() {
                     <FormControl>
                       <Select
                         onValueChange={field.onChange}
-                        defaultValue={field.value}
+                        defaultValue={field.value?.toString()}
                       >
                         <SelectTrigger>
                           <SelectValue placeholder="Selecione sua classe social" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="a">A</SelectItem>
-                          <SelectItem value="b">B</SelectItem>
+                          <SelectItem value="a/b">A/B</SelectItem>
                           <SelectItem value="c">C</SelectItem>
-                          <SelectItem value="d">D</SelectItem>
-                          <SelectItem value="e">E</SelectItem>
+                          <SelectItem value="d/e">D/E</SelectItem>
                         </SelectContent>
                       </Select>
                     </FormControl>
@@ -229,7 +202,9 @@ export function BetFormDialog() {
                     <FormControl>
                       <Select
                         onValueChange={field.onChange}
-                        defaultValue={field.value.toString()}
+                        defaultValue={
+                          field.value === 0 ? "" : field.value?.toString()
+                        }
                       >
                         <SelectTrigger>
                           <SelectValue placeholder="Selecione quantos dias por semana" />
@@ -260,56 +235,24 @@ export function BetFormDialog() {
                   <FormItem>
                     <FormLabel>Renda Mensal</FormLabel>
                     <FormControl>
-                      <Select
-                        onValueChange={field.onChange}
-                        defaultValue={field.value}
-                      >
-                        <SelectTrigger>
-                          <SelectValue placeholder="Selecione sua renda mensal" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="0-1000">até R$ 1000,00</SelectItem>
-                          <SelectItem value="1000-3000">
-                            R$ 1000,00 - R$ 3000,00
-                          </SelectItem>
-                          <SelectItem value="3000-5000">
-                            R$ 3000,00 - R$ 5000,00
-                          </SelectItem>
-                          <SelectItem value="5000-7000">
-                            R$ 5000,00 - R$ 7000,00
-                          </SelectItem>
-                          <SelectItem value="7000-10000">
-                            R$ 7000,00 - R$ 10000,00
-                          </SelectItem>
-                          <SelectItem value="10000+">R$ 10000,00+</SelectItem>
-                        </SelectContent>
-                      </Select>
+                      <div className="relative">
+                        <Input className="peer pe-12 ps-8" {...field} />
+                        <span className="pointer-events-none absolute inset-y-0 top-px start-0 flex items-center justify-center ps-3 text-sm text-muted-foreground peer-disabled:opacity-50">
+                          R$
+                        </span>
+                        <span className="pointer-events-none absolute inset-y-0 top-px end-0 flex items-center justify-center pe-3 text-sm text-muted-foreground peer-disabled:opacity-50">
+                          BRL
+                        </span>
+                      </div>
                     </FormControl>
+                    <FormDescription>
+                      Informe sua renda mensal em reais
+                    </FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
               />
             </div>
-            <FormField
-              control={form.control}
-              name="bettingMonths"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Tempo de Apostas</FormLabel>
-                  <FormControl>
-                    <Input
-                      type="number"
-                      placeholder="Há quantos meses você aposta?"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormDescription>
-                    Informe há quantos meses você faz apostas regularmente.
-                  </FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
             <DialogFooter>
               <Button type="submit">
                 {form.formState.isSubmitting && (
