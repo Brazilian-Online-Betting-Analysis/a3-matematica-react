@@ -15,10 +15,7 @@ export function ResultPage() {
     if (!resultId) return;
 
     getResultById(resultId)
-      .then((data) => {
-        setData(data);
-        console.log({ data });
-      })
+      .then(setData)
       .catch(console.error)
       .finally(() => setIsLoading(false));
   }, [resultId]);
