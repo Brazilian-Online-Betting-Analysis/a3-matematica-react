@@ -37,7 +37,10 @@ export const FormSchema = z.object({
     message: "O nome deve ter pelo menos 2 caracteres.",
   }),
   age: z.coerce
-    .number()
+    .number({
+      required_error: "A idade é obrigatória.",
+      invalid_type_error: "A idade é obrigatória.",
+    })
     .min(1, {
       message: "Idade é obrigatória.",
     })
@@ -55,16 +58,24 @@ export const FormSchema = z.object({
     })
     .transform((value) => (value === "a/b" ? 1 : value === "c" ? 2 : 3)),
   bettingFrequency: z.coerce
-    .number()
+    .number({
+      required_error: "A renda mensal é obrigatória.",
+      invalid_type_error: "A renda mensal é obrigatória.",
+    })
     .min(1, {
       message: "Por favor, selecione quantos dias por semana você aposta.",
     })
     .max(7, {
       message: "O máximo é 7 dias por semana.",
     }),
-  monthlyIncome: z.coerce.number().min(0, {
-    message: "A renda mensal deve ser maior que zero.",
-  }),
+  monthlyIncome: z.coerce
+    .number({
+      required_error: "A renda mensal é obrigatória.",
+      invalid_type_error: "A renda mensal é obrigatória.",
+    })
+    .min(0, {
+      message: "A renda mensal deve ser maior que zero.",
+    }),
 });
 
 export function BetFormDialog() {
