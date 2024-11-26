@@ -64,7 +64,7 @@ export function SocialClassChart() {
             <XAxis dataKey="class" type="category" />
             <YAxis unit="%" dataKey="percentage" />
             <Tooltip
-              formatter={(value: number, name: string, props) => {
+              formatter={(value: number, _name: string, props) => {
                 const { payload } = props;
                 return [
                   <>

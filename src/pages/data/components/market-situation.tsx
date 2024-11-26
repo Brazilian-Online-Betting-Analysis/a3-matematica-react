@@ -50,7 +50,7 @@ export function MarketSituationChart() {
               outerRadius={80}
               label={({ percent }) => `${(percent * 100).toFixed(0)}%`}
             >
-              {data.map((entry, index) => {
+              {data.map((_entry, index) => {
                 const colorKey =
                   index === 0
                     ? "occupied"
@@ -61,7 +61,7 @@ export function MarketSituationChart() {
               })}
             </Pie>
             <Tooltip
-              formatter={(value, name, props) => {
+              formatter={(value, _name, props) => {
                 const { payload } = props;
                 return [
                   <>

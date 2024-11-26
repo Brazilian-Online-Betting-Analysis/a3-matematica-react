@@ -56,7 +56,7 @@ export function SocialClassPieChart() {
               outerRadius={80}
               label={({ percent }) => `${(percent * 100).toFixed(0)}%`}
             >
-              {data.map((entry, index) => {
+              {data.map((_entry, index) => {
                 const colorKey = index === 0 ? "AB" : index === 1 ? "C" : "DE";
                 return <Cell key={`cell-${index}`} fill={COLORS[colorKey]} />;
               })}
