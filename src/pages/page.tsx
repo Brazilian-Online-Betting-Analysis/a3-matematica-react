@@ -7,7 +7,6 @@ import { Helmet } from "react-helmet-async";
 import blobTopRight from "../assets/blob-top-right.png";
 import blobLeft from "../assets/blob-left.png";
 import dice from "../assets/dice.png";
-import ibmrLogo from "../assets/ibmr-logo.png";
 import odsImage from "../assets/ods.png";
 
 export function Home() {
@@ -100,12 +99,6 @@ export function Home() {
           <img src={dice} alt="dice" className="absolute top-2/3 left-0" />
         </div>
       </main>
-      <footer className="border-t border-t-zinc-200 h-20 flex items-center">
-        <div className="container mx-auto flex justify-between">
-          <img src={ibmrLogo} alt="IBMR" className="h-12 w-12" />
-          <p>2024</p>
-        </div>
-      </footer>
     </>
   );
 }

@@ -89,6 +89,11 @@ export function BetFormDialog() {
     try {
       const responseData = await submitDataForAnalysis(data);
 
+      const history = localStorage.getItem("previous-results");
+      const historyArray = history ? JSON.parse(history) : [];
+      historyArray.push({ id: responseData.id, loss: responseData.loss });
+      localStorage.setItem("previous-results", JSON.stringify(historyArray));
+
       navigate(`/result/${responseData.id}`);
       form.reset();
     } catch (error) {
