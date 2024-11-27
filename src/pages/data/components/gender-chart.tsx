@@ -59,7 +59,7 @@ export function GenderChart() {
               }}
               {...tooltipStyles}
             />
-            <Legend />
+            <Legend iconType="circle" />
           </PieChart>
         </ResponsiveContainer>
       </div>

@@ -75,7 +75,7 @@ export function SocialClassPieChart() {
               }}
               {...tooltipStyles}
             />
-            <Legend />
+            <Legend iconType="circle" />
           </PieChart>
         </ResponsiveContainer>
       </div>

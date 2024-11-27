@@ -6,6 +6,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+import { tooltipStyles } from "./tooltip-styles";
 
 type DataPoint = {
   result: string;
@@ -64,12 +65,14 @@ export function BettingResultsChart() {
                   </>,
                 ];
               }}
-              contentStyle={{
-                backgroundColor: "white",
-                border: "1px solid #e2e8f0",
-              }}
+              {...tooltipStyles}
             />
-            <Legend layout="vertical" align="right" verticalAlign="middle" />
+            <Legend
+              layout="vertical"
+              align="right"
+              verticalAlign="middle"
+              iconType="circle"
+            />
           </PieChart>
         </ResponsiveContainer>
       </div>

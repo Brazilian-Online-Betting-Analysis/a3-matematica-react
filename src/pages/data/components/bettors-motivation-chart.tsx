@@ -6,22 +6,53 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
+  Cell,
 } from "recharts";
+import { tooltipStyles } from "./tooltip-styles";
 
-type MotivationData = {
+type DataPoint = {
   reason: string;
   percentage: number;
-}[];
+  fill: string;
+};
 
-const motivationData: MotivationData = [
-  { reason: "Quero ganhar dinheiro", percentage: 54 },
-  { reason: "Gosto da emoção/experiência", percentage: 42 },
-  { reason: "Gosto da competição", percentage: 41 },
-  { reason: "Torna os jogos mais interessantes", percentage: 36 },
-  { reason: "É um hobby", percentage: 25 },
-  { reason: "Quero experimentar algo novo", percentage: 24 },
-  { reason: "Tenho dinheiro extra para gastar", percentage: 19 },
-  { reason: "Alguém me encorajou a testar", percentage: 19 },
+const motivationData: DataPoint[] = [
+  {
+    reason: "Quero ganhar dinheiro",
+    percentage: 54,
+    fill: "hsl(var(--chart-1))",
+  },
+  {
+    reason: "Gosto da emoção/experiência",
+    percentage: 42,
+    fill: "hsl(var(--chart-2))",
+  },
+  {
+    reason: "Gosto da competição",
+    percentage: 41,
+    fill: "hsl(var(--chart-3))",
+  },
+  {
+    reason: "Torna os jogos mais interessantes",
+    percentage: 36,
+    fill: "hsl(var(--chart-4))",
+  },
+  { reason: "É um hobby", percentage: 25, fill: "hsl(var(--chart-5))" },
+  {
+    reason: "Quero experimentar algo novo",
+    percentage: 24,
+    fill: "hsl(var(--chart-6))",
+  },
+  {
+    reason: "Tenho dinheiro extra para gastar",
+    percentage: 19,
+    fill: "hsl(var(--chart-7))",
+  },
+  {
+    reason: "Alguém me encorajou a testar",
+    percentage: 19,
+    fill: "hsl(var(--chart-8))",
+  },
 ];
 
 export function BettorsMotivationChart() {
@@ -33,7 +64,7 @@ export function BettorsMotivationChart() {
           <BarChart
             data={motivationData}
             layout="vertical"
-            margin={{ top: 5, right: 30, left: 120, bottom: 5 }}
+            margin={{ top: 5, right: 30, left: 0, bottom: 5 }}
           >
             <CartesianGrid strokeDasharray="3 3" horizontal={false} />
             <XAxis
@@ -45,9 +76,11 @@ export function BettorsMotivationChart() {
             <YAxis
               type="category"
               dataKey="reason"
-              width={110}
+              width={200}
               axisLine={false}
               tickLine={false}
+              interval={0}
+              height={400}
             />
             <Tooltip
               formatter={(value) => {
@@ -57,17 +90,13 @@ export function BettorsMotivationChart() {
                   </>,
                 ];
               }}
-              contentStyle={{
-                backgroundColor: "white",
-                border: "1px solid #e2e8f0",
-              }}
+              {...tooltipStyles}
             />
-            <Bar
-              dataKey="percentage"
-              fill="hsl(var(--chart-1))"
-              radius={[0, 4, 4, 0]}
-              barSize={24}
-            />
+            <Bar dataKey="percentage" radius={[0, 4, 4, 0]} barSize={20}>
+              {motivationData.map((entry) => (
+                <Cell key={entry.reason} fill={entry.fill} />
+              ))}
+            </Bar>
           </BarChart>
         </ResponsiveContainer>
       </div>

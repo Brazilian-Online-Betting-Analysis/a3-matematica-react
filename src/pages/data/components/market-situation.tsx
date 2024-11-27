@@ -74,7 +74,7 @@ export function MarketSituationChart() {
               }}
               {...tooltipStyles}
             />
-            <Legend />
+            <Legend iconType="circle" />
           </PieChart>
         </ResponsiveContainer>
       </div>
