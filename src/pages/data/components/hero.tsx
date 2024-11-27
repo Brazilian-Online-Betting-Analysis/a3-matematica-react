@@ -1,7 +1,7 @@
 export function DataPageHero() {
   return (
-    <div className="bg-gradient-to-r from-blue-600 to-blue-800 py-24">
-      <div className="px-6 container">
+    <div className="bg-gradient-to-r from-blue-600 to-blue-800 py-32">
+      <div className="container">
         <h1 className="text-5xl font-bold text-white mb-6">
           Entendendo os apostadores
         </h1>

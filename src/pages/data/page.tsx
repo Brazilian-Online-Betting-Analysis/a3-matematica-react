@@ -10,6 +10,8 @@ import { SocialClassPieChart } from "./components/social-class-pie-chart";
 import { BettorsMotivationChart } from "./components/bettors-motivation-chart";
 import { BettingResultsChart } from "./components/betting-results-chart";
 import { Helmet } from "react-helmet-async";
+import { IncomeUsageChart } from "@/components/charts/income-usage-chart";
+import { SpendingReductionChart } from "@/components/charts/spending-reduction-chart";
 
 export function DataPage() {
   return (
@@ -126,18 +128,10 @@ export function DataPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
-                {/* CHART GOES HERE */}
-                <p className="text-sm text-gray-500 mt-4 text-center">
-                  Fonte: Pesquisa Sociedade Brasileira de Varejo e Consumo SBVC
-                  (Data de acesso: 07/11/2024)
-                </p>
+                <IncomeUsageChart />
               </div>
               <div>
-                {/* CHART GOES HERE */}
-                <p className="text-sm text-gray-500 mt-4 text-center">
-                  Fonte: Pesquisa Sociedade Brasileira de Varejo e Consumo SBVC
-                  (Data de acesso: 07/11/2024)
-                </p>
+                <SpendingReductionChart />
               </div>
             </div>
           </section>
