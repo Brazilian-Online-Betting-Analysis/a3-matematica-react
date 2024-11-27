@@ -41,9 +41,7 @@ const data: DataPoint[] = [
 export function SocialClassPieChart() {
   return (
     <div className="flex flex-col h-full">
-      <h3 className="text-lg font-medium mb-4">
-        Distribuição por classe social
-      </h3>
+      <h4 className="text-lg font-medium mb-4">Visualização de Pizza</h4>
       <div className="min-h-[300px] h-[300px] relative flex-1">
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>
@@ -62,13 +60,16 @@ export function SocialClassPieChart() {
               })}
             </Pie>
             <Tooltip
-              formatter={(value, name) => {
+              formatter={(value, name, props) => {
+                const { payload } = props;
+
                 return [
                   <>
                     <span className="font-medium text-black inline-block mb-2">
                       {name}
                     </span>
                     <div>Porcentagem: {`${value}%`}</div>
+                    <div>Renda: {payload.income}</div>
                   </>,
                 ];
               }}

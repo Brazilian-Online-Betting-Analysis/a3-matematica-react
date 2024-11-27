@@ -46,12 +46,17 @@ export function DataPage() {
               de renda para cada classe social.
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div>
-                <SocialClassChart />
-              </div>
-              <div>
-                <SocialClassPieChart />
+            <div>
+              <h3 className="text-xl font-medium mb-4">
+                Classe social dos apostadores
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                  <SocialClassChart />
+                </div>
+                <div>
+                  <SocialClassPieChart />
+                </div>
               </div>
             </div>
           </section>
@@ -64,21 +69,6 @@ export function DataPage() {
               está fora do mercado, que inclui aposentados, e pessoas que não
               procuram emprego.
             </p>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div>
-                {/* CHART GOES HERE */}
-                <p className="text-sm text-gray-500 mt-4 text-center">
-                  Fonte: Instituto DataSenado (Data de acesso: 07/11/2024)
-                </p>
-              </div>
-              <div>
-                {/* CHART GOES HERE */}
-                <p className="text-sm text-gray-500 mt-4 text-center">
-                  Fonte: Instituto DataSenado (Data de acesso: 07/11/2024)
-                </p>
-              </div>
-            </div>
           </section>
 
           <section>

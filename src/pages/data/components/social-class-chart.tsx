@@ -46,9 +46,7 @@ const data: DataPoint[] = [
 export function SocialClassChart() {
   return (
     <div className="flex flex-col h-full">
-      <h3 className="text-lg font-medium mb-4">
-        Classe social dos apostadores
-      </h3>
+      <h4 className="text-lg font-medium mb-4">Visualização de Barras</h4>
       <div className="min-h-[300px] h-[300px] relative flex-1">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart

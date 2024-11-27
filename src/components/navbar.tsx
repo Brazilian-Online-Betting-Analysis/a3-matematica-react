@@ -17,6 +17,18 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const scrollToSection = (id: string) => {
+    if (id === "hero") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <nav
       className={cn(
@@ -32,33 +44,37 @@ export function Navbar() {
           className="text-xl "
           isScrolled={isScrolled}
           isResultPage={isResultPage}
+          onClick={() => scrollToSection("hero")}
         >
           Betting
         </NavLink>
         <ul className="flex justify-center items-center gap-8">
           <li>
             <NavLink
-              href="/#por-que"
+              href="por-que"
               isScrolled={isScrolled}
               isResultPage={isResultPage}
+              onClick={() => scrollToSection("por-que")}
             >
               Por que?
             </NavLink>
           </li>
           <li>
             <NavLink
-              href="/#como"
+              href="como"
               isScrolled={isScrolled}
               isResultPage={isResultPage}
+              onClick={() => scrollToSection("como")}
             >
               Como?
             </NavLink>
           </li>
           <li>
             <NavLink
-              href="/#ods"
+              href="ods"
               isScrolled={isScrolled}
               isResultPage={isResultPage}
+              onClick={() => scrollToSection("ods")}
             >
               ODS
             </NavLink>
@@ -85,6 +101,7 @@ type NavLinkProps = {
   className?: string;
   isScrolled?: boolean;
   isResultPage?: boolean;
+  onClick?: () => void;
 };
 
 const NavLink = ({
@@ -93,10 +110,19 @@ const NavLink = ({
   className,
   isScrolled = false,
   isResultPage = false,
+  onClick,
 }: NavLinkProps) => {
+  const handleClick = (e: React.MouseEvent) => {
+    if (onClick) {
+      e.preventDefault();
+      onClick();
+    }
+  };
+
   return (
     <Link
       to={href}
+      onClick={handleClick}
       className={cn(
         "hover:underline hover:underline-offset-4",
         isResultPage || isScrolled
