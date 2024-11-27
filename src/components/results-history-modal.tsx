@@ -8,13 +8,14 @@ import {
 import { Button } from "./ui/button";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { History } from "lucide-react";
 
 type HistoryItem = {
   id: string;
   loss: number;
 };
 
-function ResultsHistoryModal() {
+export function ResultsHistoryModal() {
   const navigate = useNavigate();
   const [showHistoryModal, setShowHistoryModal] = useState(false);
   const [history, setHistory] = useState<HistoryItem[]>([]);
@@ -37,8 +38,8 @@ function ResultsHistoryModal() {
     <div className="flex justify-end items-center">
       <Dialog open={showHistoryModal} onOpenChange={setShowHistoryModal}>
         <DialogTrigger asChild>
-          <Button variant="outline" className="w-fit">
-            Histórico
+          <Button variant="outline" size="icon">
+            <History className="size-4" />
           </Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-md">
@@ -77,5 +78,3 @@ function ResultsHistoryModal() {
     </div>
   );
 }
-
-export default ResultsHistoryModal;

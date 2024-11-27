@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-import ResultsHistoryModal from "./ResultsHistoryModal";
+import { ResultsHistoryModal } from "./results-history-modal";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -17,18 +17,6 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (id: string) => {
-    if (id === "hero") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      return;
-    }
-
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
     <nav
       className={cn(
@@ -40,41 +28,37 @@ export function Navbar() {
     >
       <div className="container mx-auto grid grid-cols-3 items-center">
         <NavLink
-          href="/"
+          href="/#top"
           className="text-xl "
           isScrolled={isScrolled}
           isResultPage={isResultPage}
-          onClick={() => scrollToSection("hero")}
         >
           Betting
         </NavLink>
         <ul className="flex justify-center items-center gap-8">
           <li>
             <NavLink
-              href="por-que"
+              href="/#por-que"
               isScrolled={isScrolled}
               isResultPage={isResultPage}
-              onClick={() => scrollToSection("por-que")}
             >
               Por que?
             </NavLink>
           </li>
           <li>
             <NavLink
-              href="como"
+              href="/#como"
               isScrolled={isScrolled}
               isResultPage={isResultPage}
-              onClick={() => scrollToSection("como")}
             >
               Como?
             </NavLink>
           </li>
           <li>
             <NavLink
-              href="ods"
+              href="/#ods"
               isScrolled={isScrolled}
               isResultPage={isResultPage}
-              onClick={() => scrollToSection("ods")}
             >
               ODS
             </NavLink>

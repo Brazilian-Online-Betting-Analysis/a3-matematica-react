@@ -33,9 +33,14 @@ import { useNavigate } from "react-router-dom";
 import { submitDataForAnalysis } from "@/services/submit-data-for-analysis";
 
 export const FormSchema = z.object({
-  name: z.string().min(2, {
-    message: "O nome deve ter pelo menos 2 caracteres.",
-  }),
+  name: z
+    .string({
+      required_error: "O nome é obrigatório.",
+      invalid_type_error: "O nome é obrigatório.",
+    })
+    .min(2, {
+      message: "O nome deve ter pelo menos 2 caracteres.",
+    }),
   age: z.coerce
     .number({
       required_error: "A idade é obrigatória.",
