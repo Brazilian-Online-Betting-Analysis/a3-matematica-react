@@ -4,13 +4,8 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-type HistoryItem = {
-  id: string;
-  loss: number;
-};
+import { useHistory } from "@/contexts/history-context";
 
 type ResultsHistoryModalProps = {
   isOpen: boolean;
@@ -22,14 +17,7 @@ export function ResultsHistoryModal({
   onOpenChange,
 }: ResultsHistoryModalProps) {
   const navigate = useNavigate();
-  const [history, setHistory] = useState<HistoryItem[]>([]);
-
-  useEffect(() => {
-    const previousResults = localStorage.getItem("previous-results");
-    if (previousResults) {
-      setHistory(JSON.parse(previousResults));
-    }
-  }, []);
+  const { history } = useHistory();
 
   const handleHistoryItemClick = (id: string) => {
     onOpenChange(false);
@@ -45,7 +33,7 @@ export function ResultsHistoryModal({
           <DialogTitle>Resultados anteriores</DialogTitle>
         </DialogHeader>
         <div className="max-h-96 overflow-y-auto">
-          {history.map((item, index) => (
+          {[...history].reverse().map((item, index) => (
             <button
               key={item.id}
               onClick={() => handleHistoryItemClick(item.id)}

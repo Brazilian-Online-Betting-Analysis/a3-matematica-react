@@ -31,6 +31,7 @@ import {
 import { Loader2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { submitDataForAnalysis } from "@/services/submit-data-for-analysis";
+import { useHistory } from "@/contexts/history-context";
 
 export const FormSchema = z.object({
   name: z
@@ -46,8 +47,8 @@ export const FormSchema = z.object({
       required_error: "A idade é obrigatória.",
       invalid_type_error: "A idade é obrigatória.",
     })
-    .min(1, {
-      message: "Idade é obrigatória.",
+    .min(18, {
+      message: "Idade deve ser maior que 18 anos.",
     })
     .max(100, {
       message: "Você deve ter no máximo 100 anos.",
@@ -85,6 +86,7 @@ export const FormSchema = z.object({
 
 export function BetFormDialog() {
   const navigate = useNavigate();
+  const { addHistoryItem } = useHistory();
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -94,10 +96,7 @@ export function BetFormDialog() {
     try {
       const responseData = await submitDataForAnalysis(data);
 
-      const history = localStorage.getItem("previous-results");
-      const historyArray = history ? JSON.parse(history) : [];
-      historyArray.push({ id: responseData.id, loss: responseData.loss });
-      localStorage.setItem("previous-results", JSON.stringify(historyArray));
+      addHistoryItem({ id: responseData.id, loss: responseData.loss });
 
       navigate(`/result/${responseData.id}`);
       form.reset();

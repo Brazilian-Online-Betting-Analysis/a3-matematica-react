@@ -6,8 +6,8 @@ export const ResultSchema = z.object({
   loss: z.number(),
   name: z.string(),
   age: z.number(),
-  gender: z.number(),
-  social_class: z.number(),
+  gender: z.union([z.literal(0), z.literal(1)]),
+  social_class: z.union([z.literal(1), z.literal(2), z.literal(3)]),
   bets_frequency: z.number(),
   mensal_income: z.number(),
 });

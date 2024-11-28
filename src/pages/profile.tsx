@@ -15,7 +15,12 @@ export function Profile() {
 
       <div className="space-y-6">
         <h1 className="text-2xl font-bold text-red-600">
-          Previsão de perda mensal: R$ {userData.expectedMonthlyLoss} em apostas
+          Previsão de perda mensal:{" "}
+          {new Intl.NumberFormat("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+          }).format(userData.expectedMonthlyLoss)}
+          em apostas
         </h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

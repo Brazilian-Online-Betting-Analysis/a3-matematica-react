@@ -6,21 +6,31 @@ import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router-dom";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
+import { AgeRankingsChart } from "@/components/charts/age-rankings-chart";
+import { SocialClassRankingsChart } from "@/components/charts/social-class-rankings-chart";
+import { GenderRankingsChart } from "@/components/charts/gender-rankings-chart";
+import { getRankings, RankingsReturn } from "@/services/get-rankings";
+import { BetsFrequencyRankingsChart } from "@/components/charts/bets-frequency-rankings-chart";
 
 export function ResultPage() {
   const { resultId } = useParams();
 
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState<Result | null>(null);
+  const [rankings, setRankings] = useState<RankingsReturn | null>(null);
   const [isCopied, setIsCopied] = useState(false);
 
   useEffect(() => {
     if (!resultId) return;
 
-    getResultById(resultId)
-      .then(setData)
-      .catch(console.error)
-      .finally(() => setIsLoading(false));
+    Promise.all([getResultById(resultId), getRankings()]).then(
+      ([result, rankings]) => {
+        setData(result);
+        console.log({ rankings });
+        setRankings(rankings);
+        setIsLoading(false);
+      },
+    );
   }, [resultId]);
 
   const getGenderLabel = (gender: number) => {
@@ -82,7 +92,7 @@ export function ResultPage() {
                   variant="outline"
                   size="sm"
                   onClick={handleShare}
-                  className="w-full sm:w-auto hover:bg-red-100 flex items-center justify-center gap-2"
+                  className="w-full sm:w-auto hover:bg-red-100 flex items-center justify-center gap-2 sm:min-w-[182px]"
                 >
                   {isCopied ? (
                     <>
@@ -155,6 +165,31 @@ export function ResultPage() {
                 Atenção: Aposte com responsabilidade. Estabeleça limites e não
                 aposte mais do que pode perder.
               </p>
+            </div>
+
+            <div className="flex flex-col gap-4">
+              <h2 className="text-lg sm:text-xl font-semibold text-gray-900 mb-4">
+                Ranking de perda
+              </h2>
+
+              <div className="flex flex-col gap-16">
+                <AgeRankingsChart
+                  rankings={rankings?.age_rankings ?? []}
+                  currentAge={data.age}
+                />
+                <SocialClassRankingsChart
+                  rankings={rankings?.social_class_rankings ?? []}
+                  currentSocialClass={data.social_class}
+                />
+                <GenderRankingsChart
+                  rankings={rankings?.gender_rankings ?? []}
+                  currentGender={data.gender}
+                />
+                <BetsFrequencyRankingsChart
+                  rankings={rankings?.bets_frequency_rankings ?? []}
+                  currentBetsFrequency={data.bets_frequency}
+                />
+              </div>
             </div>
           </div>
         ) : (
