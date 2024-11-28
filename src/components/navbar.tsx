@@ -2,11 +2,24 @@ import { cn } from "@/lib/utils";
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { ResultsHistoryModal } from "./results-history-modal";
+import { History, Menu, X } from "lucide-react";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "./ui/sheet";
+import { Button } from "./ui/button";
+import { GithubIcon } from "./icons/github";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const location = useLocation();
   const isResultPage = location.pathname.startsWith("/result/");
+  const [isResultsHistoryModalOpen, setIsResultsHistoryModalOpen] =
+    useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,13 +42,15 @@ export function Navbar() {
       <div className="container mx-auto grid grid-cols-3 items-center">
         <NavLink
           href="/#top"
-          className="text-xl "
+          className="text-xl"
           isScrolled={isScrolled}
           isResultPage={isResultPage}
         >
           Betting
         </NavLink>
-        <ul className="flex justify-center items-center gap-8">
+
+        {/* Desktop Navigation */}
+        <ul className="hidden md:flex justify-center items-center gap-8">
           <li>
             <NavLink
               href="/#por-que"
@@ -73,7 +88,106 @@ export function Navbar() {
             </NavLink>
           </li>
         </ul>
-        <ResultsHistoryModal />
+
+        <div className="flex justify-end items-center gap-4 col-span-2 md:col-span-1">
+          <div className="hidden md:block">
+            <ResultsHistoryModal
+              isOpen={isResultsHistoryModalOpen}
+              onOpenChange={setIsResultsHistoryModalOpen}
+            />
+
+            <Button
+              variant="secondary"
+              size="icon"
+              onClick={() => setIsResultsHistoryModalOpen(true)}
+            >
+              <History className="size-4" />
+            </Button>
+          </div>
+
+          <Sheet open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
+            <SheetTrigger asChild>
+              <Button
+                variant="secondary"
+                size="icon"
+                className="md:hidden"
+                onClick={() => setIsDrawerOpen(!isDrawerOpen)}
+              >
+                {isDrawerOpen ? (
+                  <X className="size-4" />
+                ) : (
+                  <Menu className="size-4" />
+                )}
+              </Button>
+            </SheetTrigger>
+            <SheetContent>
+              <SheetHeader>
+                <SheetTitle>Menu de Navegação</SheetTitle>
+              </SheetHeader>
+              <ul className="flex flex-col py-4 gap-4">
+                <li>
+                  <NavLink
+                    href="/#por-que"
+                    isScrolled={true}
+                    isResultPage={isResultPage}
+                    onClick={() => setIsDrawerOpen(false)}
+                  >
+                    Por que?
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    href="/#como"
+                    isScrolled={true}
+                    isResultPage={isResultPage}
+                    onClick={() => setIsDrawerOpen(false)}
+                  >
+                    Como?
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    href="/#ods"
+                    isScrolled={true}
+                    isResultPage={isResultPage}
+                    onClick={() => setIsDrawerOpen(false)}
+                  >
+                    ODS
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    href="/data"
+                    isScrolled={true}
+                    isResultPage={isResultPage}
+                    onClick={() => setIsDrawerOpen(false)}
+                  >
+                    Dados
+                  </NavLink>
+                </li>
+
+                <li>
+                  <button
+                    className="hover:underline hover:underline-offset-4 whitespace-nowrap text-slate-800 hover:text-slate-900"
+                    onClick={() => setIsResultsHistoryModalOpen(true)}
+                  >
+                    Histórico
+                  </button>
+                </li>
+                <li>
+                  <a
+                    href="https://github.com/Brazilian-Online-Betting-Analysis/a3-matematica-react"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-colors flex items-center justify-start gap-1"
+                  >
+                    <GithubIcon className="size-4" /> Ver no GitHub{" "}
+                  </a>
+                </li>
+              </ul>
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
     </nav>
   );
@@ -96,19 +210,12 @@ const NavLink = ({
   isResultPage = false,
   onClick,
 }: NavLinkProps) => {
-  const handleClick = (e: React.MouseEvent) => {
-    if (onClick) {
-      e.preventDefault();
-      onClick();
-    }
-  };
-
   return (
     <Link
       to={href}
-      onClick={handleClick}
+      onClick={onClick}
       className={cn(
-        "hover:underline hover:underline-offset-4",
+        "hover:underline hover:underline-offset-4 whitespace-nowrap",
         isResultPage || isScrolled
           ? "text-slate-800 hover:text-slate-900"
           : "text-white hover:text-zinc-200",

@@ -27,8 +27,8 @@ export const FeatureSection = ({
       className={cn(
         "flex items-center justify-between relative z-10",
         direction === "column"
-          ? "flex-col gap-12"
-          : "flex-col-reverse gap-12 lg:gap-32 lg:flex-row",
+          ? "flex-col gap-8 md:gap-12"
+          : "flex-col-reverse gap-8 md:gap-12 lg:gap-32 lg:flex-row",
         isInverted
           ? direction === "row"
             ? "flex-col-reverse lg:flex-row-reverse"
@@ -37,14 +37,17 @@ export const FeatureSection = ({
       )}
     >
       <div
-        className={`text-content ${shouldCentralizeText ? "text-center" : ""} flex flex-col gap-4`}
+        className={cn(
+          "text-content flex flex-col gap-3 md:gap-4",
+          shouldCentralizeText && "text-center",
+        )}
       >
-        <h2 className="text-4xl">{title}</h2>
-        <p>{description}</p>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">{title}</h2>
+        <p className="text-base sm:text-lg">{description}</p>
       </div>
       <img
         className={cn(
-          "h-[300px] w-auto rounded-lg",
+          "h-[200px] sm:h-[250px] md:h-[300px] w-auto rounded-lg object-cover",
           imageWithShadow && "shadow-lg",
         )}
         src={image}

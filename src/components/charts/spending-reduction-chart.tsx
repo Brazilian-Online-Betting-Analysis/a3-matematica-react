@@ -58,11 +58,9 @@ export function SpendingReductionChart() {
               data={data}
               cx="50%"
               cy="50%"
-              labelLine={true}
-              label={({ category, percentage }) =>
-                `${category} (${percentage}%)`
-              }
-              outerRadius={120}
+              labelLine={false}
+              label={({ percentage }) => `${percentage}%`}
+              outerRadius={80}
               dataKey="percentage"
               nameKey="category"
             >
@@ -85,6 +83,18 @@ export function SpendingReductionChart() {
             />
           </PieChart>
         </ResponsiveContainer>
+      </div>
+
+      <div className="grid grid-cols-2 gap-2 mt-4 text-sm">
+        {data.map((item, index) => (
+          <div key={index} className="flex items-center gap-2">
+            <div
+              className="w-3 h-3 rounded-full"
+              style={{ backgroundColor: item.fill }}
+            />
+            <span>{item.category}</span>
+          </div>
+        ))}
       </div>
 
       <p className="text-sm text-gray-500 mt-4 text-center">
