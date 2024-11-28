@@ -56,7 +56,7 @@ export const FormSchema = z.object({
     .enum(["man", "woman"], {
       message: "Por favor, selecione um gênero válido.",
     })
-    .transform((value) => (value === "man" ? 1 : 2)),
+    .transform((value) => (value === "man" ? 0 : 1)),
   socialClass: z
     .enum(["a/b", "c", "d/e"], {
       message: "Por favor, selecione uma classe social válida.",

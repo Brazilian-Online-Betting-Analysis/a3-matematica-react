@@ -24,7 +24,7 @@ export function ResultPage() {
   }, [resultId]);
 
   const getGenderLabel = (gender: number) => {
-    return gender === 1 ? "Homem" : "Mulher";
+    return gender === 0 ? "Homem" : "Mulher";
   };
 
   const getSocialClassLabel = (socialClass: number) => {
@@ -66,12 +66,12 @@ export function ResultPage() {
             <Loader2 className="animate-spin size-16 text-slate-600" />
           </div>
         ) : data ? (
-          <div className="max-w-4xl mx-auto space-y-8">
-            <div className="bg-red-50 p-6 rounded-xl border border-red-200">
-              <div className="flex items-center justify-between">
-                <h1 className="text-3xl font-bold text-red-700">
+          <div className="max-w-4xl mx-auto space-y-6 sm:space-y-8">
+            <div className="bg-red-50 p-4 sm:p-6 rounded-xl border border-red-200">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <h1 className="text-2xl sm:text-3xl font-bold text-red-700">
                   Previsão de perda mensal:{" "}
-                  <span className="text-red-600">
+                  <span className="text-red-600 block sm:inline mt-1 sm:mt-0">
                     {new Intl.NumberFormat("pt-BR", {
                       style: "currency",
                       currency: "BRL",
@@ -82,7 +82,7 @@ export function ResultPage() {
                   variant="outline"
                   size="sm"
                   onClick={handleShare}
-                  className="hover:bg-red-100 flex items-center gap-2"
+                  className="w-full sm:w-auto hover:bg-red-100 flex items-center justify-center gap-2"
                 >
                   {isCopied ? (
                     <>
@@ -99,12 +99,12 @@ export function ResultPage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow">
-                <h2 className="text-xl font-semibold text-gray-900 mb-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+              <div className="bg-white rounded-xl shadow-sm p-4 sm:p-6 hover:shadow-md transition-shadow">
+                <h2 className="text-lg sm:text-xl font-semibold text-gray-900 mb-4">
                   Dados Pessoais
                 </h2>
-                <ul className="space-y-3 text-gray-700">
+                <ul className="space-y-3 text-sm sm:text-base text-gray-700">
                   <li className="flex justify-between">
                     <span className="text-gray-500">Nome</span>
                     <span className="font-medium">{data.name}</span>
@@ -122,11 +122,11 @@ export function ResultPage() {
                 </ul>
               </div>
 
-              <div className="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow">
-                <h2 className="text-xl font-semibold text-gray-900 mb-4">
+              <div className="bg-white rounded-xl shadow-sm p-4 sm:p-6 hover:shadow-md transition-shadow">
+                <h2 className="text-lg sm:text-xl font-semibold text-gray-900 mb-4">
                   Dados de Apostas
                 </h2>
-                <ul className="space-y-3 text-gray-700">
+                <ul className="space-y-3 text-sm sm:text-base text-gray-700">
                   <li className="flex justify-between">
                     <span className="text-gray-500">Classe Social</span>
                     <span className="font-medium">
@@ -150,16 +150,18 @@ export function ResultPage() {
               </div>
             </div>
 
-            <div className="bg-yellow-50 p-6 rounded-xl border border-yellow-200">
-              <p className="text-yellow-800 text-center font-medium">
+            <div className="bg-yellow-50 p-4 sm:p-6 rounded-xl border border-yellow-200">
+              <p className="text-yellow-800 text-center text-sm sm:text-base font-medium">
                 Atenção: Aposte com responsabilidade. Estabeleça limites e não
                 aposte mais do que pode perder.
               </p>
             </div>
           </div>
         ) : (
-          <div>
-            <p>Não foi possível encontrar o resultado</p>
+          <div className="text-center p-4">
+            <p className="text-gray-600">
+              Não foi possível encontrar o resultado
+            </p>
           </div>
         )}
       </main>
