@@ -79,7 +79,7 @@ export function Home() {
               </ul>
             </div>
             <img
-              className="h-[450px] w-auto rounded-lg"
+              className="h-auto md:h-[450px] w-auto rounded-lg"
               src={odsImage}
               alt="ODS"
             />
