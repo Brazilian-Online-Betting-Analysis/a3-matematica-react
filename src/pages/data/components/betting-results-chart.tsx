@@ -1,11 +1,4 @@
-import {
-  PieChart,
-  Pie,
-  Cell,
-  Legend,
-  Tooltip,
-  ResponsiveContainer,
-} from "recharts";
+import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
 import { tooltipStyles } from "./tooltip-styles";
 
 type DataPoint = {
@@ -67,14 +60,20 @@ export function BettingResultsChart() {
               }}
               {...tooltipStyles}
             />
-            <Legend
-              layout="vertical"
-              align="right"
-              verticalAlign="middle"
-              iconType="circle"
-            />
           </PieChart>
         </ResponsiveContainer>
+      </div>
+
+      <div className="grid grid-cols-2 gap-2 mt-4 text-sm">
+        {data.map((item, index) => (
+          <div key={index} className="flex items-center gap-2">
+            <div
+              className="w-3 h-3 min-w-3 min-h-3 rounded-full"
+              style={{ backgroundColor: item.fill }}
+            />
+            <span>{item.result}</span>
+          </div>
+        ))}
       </div>
 
       <p className="text-sm text-gray-500 mt-4 text-center">
