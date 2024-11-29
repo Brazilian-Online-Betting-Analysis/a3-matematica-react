@@ -109,7 +109,7 @@ export function Navbar() {
           </li>
         </ul>
 
-        <div className="flex justify-end items-center gap-4 col-span-2 md:col-span-1">
+        <div className="flex justify-end items-center gap-4 col-span-4 md:col-span-1">
           <div className="hidden md:block">
             <ResultsHistoryModal
               isOpen={isResultsHistoryModalOpen}
