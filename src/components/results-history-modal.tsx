@@ -1,6 +1,7 @@
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
@@ -31,6 +32,9 @@ export function ResultsHistoryModal({
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle>Resultados anteriores</DialogTitle>
+          <DialogDescription>
+            Os resultados anteriores são armazenados apenas no seu dispositivo.
+          </DialogDescription>
         </DialogHeader>
         <div className="max-h-96 overflow-y-auto">
           {[...history].reverse().map((item, index) => (
@@ -47,7 +51,7 @@ export function ResultsHistoryModal({
               </div>
               <div className="flex flex-col gap-1 items-end">
                 <span className="text-sm text-gray-500 whitespace-nowrap">
-                  Perda prevista
+                  Gasto previsto
                 </span>
                 <span className="font-medium text-red-600 group-hover:text-red-500">
                   {new Intl.NumberFormat("pt-BR", {

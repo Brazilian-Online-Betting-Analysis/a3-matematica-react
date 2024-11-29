@@ -273,7 +273,12 @@ export function BetFormDialog() {
                 )}
               />
             </div>
-            <DialogFooter>
+            <DialogFooter className="flex sm:flex-col gap-4">
+              <p className="text-sm text-muted-foreground text-right">
+                Os dados também serão usados para gerar um ranking de
+                apostadores, seu nome não será exibido.
+              </p>
+
               <Button type="submit">
                 {form.formState.isSubmitting && (
                   <Loader2 className="animate-spin" />

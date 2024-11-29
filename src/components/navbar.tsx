@@ -2,7 +2,15 @@ import { cn } from "@/lib/utils";
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { ResultsHistoryModal } from "./results-history-modal";
-import { History, Menu, X } from "lucide-react";
+import {
+  ChartArea,
+  HelpCircle,
+  History,
+  Menu,
+  Target,
+  Trophy,
+  X,
+} from "lucide-react";
 import {
   Sheet,
   SheetContent,
@@ -39,7 +47,7 @@ export function Navbar() {
           : "bg-transparent",
       )}
     >
-      <div className="container mx-auto grid grid-cols-3 items-center">
+      <div className="container mx-auto grid grid-cols-5 items-center">
         <NavLink
           href="/#top"
           className="text-xl"
@@ -50,7 +58,7 @@ export function Navbar() {
         </NavLink>
 
         {/* Desktop Navigation */}
-        <ul className="hidden md:flex justify-center items-center gap-8">
+        <ul className="hidden md:flex justify-center items-center gap-8 col-span-3">
           <li>
             <NavLink
               href="/#por-que"
@@ -85,6 +93,18 @@ export function Navbar() {
               isResultPage={isResultPage}
             >
               Dados
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink
+              href="/rankings"
+              isScrolled={isScrolled}
+              isResultPage={isResultPage}
+            >
+              {" "}
+              <Trophy className="size-4" />
+              Rankings
             </NavLink>
           </li>
         </ul>
@@ -132,6 +152,7 @@ export function Navbar() {
                     isResultPage={isResultPage}
                     onClick={() => setIsDrawerOpen(false)}
                   >
+                    <HelpCircle className="size-4" />
                     Por que?
                   </NavLink>
                 </li>
@@ -142,6 +163,7 @@ export function Navbar() {
                     isResultPage={isResultPage}
                     onClick={() => setIsDrawerOpen(false)}
                   >
+                    <HelpCircle className="size-4" />
                     Como?
                   </NavLink>
                 </li>
@@ -152,6 +174,7 @@ export function Navbar() {
                     isResultPage={isResultPage}
                     onClick={() => setIsDrawerOpen(false)}
                   >
+                    <Target className="size-4" />
                     ODS
                   </NavLink>
                 </li>
@@ -162,18 +185,31 @@ export function Navbar() {
                     isResultPage={isResultPage}
                     onClick={() => setIsDrawerOpen(false)}
                   >
+                    <ChartArea className="size-4" />
                     Dados
                   </NavLink>
                 </li>
 
                 <li>
                   <button
-                    className="hover:underline hover:underline-offset-4 whitespace-nowrap text-slate-800 hover:text-slate-900"
+                    className="hover:underline hover:underline-offset-4 whitespace-nowrap text-slate-800 hover:text-slate-900 flex items-center gap-2"
                     onClick={() => setIsResultsHistoryModalOpen(true)}
                   >
-                    Histórico
+                    <History className="size-4" /> Histórico
                   </button>
                 </li>
+
+                <li>
+                  <NavLink
+                    href="/rankings"
+                    isScrolled={true}
+                    isResultPage={isResultPage}
+                    onClick={() => setIsDrawerOpen(false)}
+                  >
+                    <Trophy className="size-4" /> Rankings
+                  </NavLink>
+                </li>
+
                 <li>
                   <a
                     href="https://github.com/Brazilian-Online-Betting-Analysis/a3-matematica-react"
@@ -215,7 +251,7 @@ const NavLink = ({
       to={href}
       onClick={onClick}
       className={cn(
-        "hover:underline hover:underline-offset-4 whitespace-nowrap",
+        "hover:underline hover:underline-offset-4 whitespace-nowrap flex items-center gap-2",
         isResultPage || isScrolled
           ? "text-slate-800 hover:text-slate-900"
           : "text-white hover:text-zinc-200",

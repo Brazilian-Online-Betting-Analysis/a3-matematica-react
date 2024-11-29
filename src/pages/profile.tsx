@@ -15,7 +15,7 @@ export function Profile() {
 
       <div className="space-y-6">
         <h1 className="text-2xl font-bold text-red-600">
-          Previsão de perda mensal:{" "}
+          Previsão de gasto mensal:{" "}
           {new Intl.NumberFormat("pt-BR", {
             style: "currency",
             currency: "BRL",

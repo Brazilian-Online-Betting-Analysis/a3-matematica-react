@@ -22,7 +22,7 @@ type DataPoint = {
 
 type SocialClassRankingsChartProps = {
   rankings: RankingsReturn["social_class_rankings"];
-  currentSocialClass: 1 | 2 | 3;
+  currentSocialClass?: 1 | 2 | 3;
 };
 
 export function SocialClassRankingsChart({
@@ -48,7 +48,7 @@ export function SocialClassRankingsChart({
 
   return (
     <div className="flex flex-col h-[300px]">
-      <h3 className="text-lg font-medium mb-4">Perdas por Classe Social</h3>
+      <h3 className="text-lg font-medium mb-4">Gastos por Classe Social</h3>
       <div className="min-h-[300px] h-[300px] relative flex-1">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
@@ -76,7 +76,7 @@ export function SocialClassRankingsChart({
                 return [
                   <>
                     <div>
-                      Perda média:{" "}
+                      Gasto médio:{" "}
                       {new Intl.NumberFormat("pt-BR", {
                         style: "currency",
                         currency: "BRL",

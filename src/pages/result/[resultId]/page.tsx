@@ -80,7 +80,7 @@ export function ResultPage() {
             <div className="bg-red-50 p-4 sm:p-6 rounded-xl border border-red-200">
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <h1 className="text-2xl sm:text-3xl font-bold text-red-700">
-                  Previsão de perda mensal:{" "}
+                  Previsão de gasto mensal:{" "}
                   <span className="text-red-600 block sm:inline mt-1 sm:mt-0">
                     {new Intl.NumberFormat("pt-BR", {
                       style: "currency",
@@ -169,7 +169,7 @@ export function ResultPage() {
 
             <div className="flex flex-col gap-4">
               <h2 className="text-lg sm:text-xl font-semibold text-gray-900 mb-4">
-                Ranking de perda
+                Ranking de gastos
               </h2>
 
               <div className="flex flex-col gap-16">

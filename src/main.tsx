@@ -6,6 +6,7 @@ import { Home } from "./pages/page.tsx";
 import { Layout } from "./pages/layout.tsx";
 import { ResultPage } from "./pages/result/[resultId]/page.tsx";
 import { DataPage } from "./pages/data/page.tsx";
+import { RankingsPage } from "./pages/rankings/page.tsx";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: "/data",
         element: <DataPage />,
+      },
+      {
+        path: "/rankings",
+        element: <RankingsPage />,
       },
     ],
   },

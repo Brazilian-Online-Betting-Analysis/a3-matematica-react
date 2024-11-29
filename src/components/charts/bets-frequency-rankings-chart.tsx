@@ -22,7 +22,7 @@ type DataPoint = {
 
 type BetsFrequencyRankingsChartProps = {
   rankings: RankingsReturn["bets_frequency_rankings"];
-  currentBetsFrequency: number;
+  currentBetsFrequency?: number;
 };
 
 export function BetsFrequencyRankingsChart({
@@ -45,7 +45,7 @@ export function BetsFrequencyRankingsChart({
   return (
     <div className="flex flex-col h-[300px]">
       <h3 className="text-lg font-medium mb-4">
-        Perdas por Frequência de Apostas
+        Gastos por Frequência de Apostas
       </h3>
       <div className="min-h-[300px] h-[300px] relative flex-1">
         <ResponsiveContainer width="100%" height="100%">
@@ -79,7 +79,7 @@ export function BetsFrequencyRankingsChart({
                 return [
                   <>
                     <div>
-                      Perda média:{" "}
+                      Gasto médio:{" "}
                       {new Intl.NumberFormat("pt-BR", {
                         style: "currency",
                         currency: "BRL",

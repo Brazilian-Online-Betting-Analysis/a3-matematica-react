@@ -22,7 +22,7 @@ type DataPoint = {
 
 type GenderRankingsChartProps = {
   rankings: RankingsReturn["gender_rankings"];
-  currentGender: 0 | 1;
+  currentGender?: 0 | 1;
 };
 
 export function GenderRankingsChart({
@@ -43,7 +43,7 @@ export function GenderRankingsChart({
 
   return (
     <div className="flex flex-col h-[300px]">
-      <h3 className="text-lg font-medium mb-4">Perdas por Gênero</h3>
+      <h3 className="text-lg font-medium mb-4">Gastos por Gênero</h3>
       <div className="min-h-[300px] h-[300px] relative flex-1">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
@@ -73,7 +73,7 @@ export function GenderRankingsChart({
                 return [
                   <>
                     <div>
-                      Perda média:{" "}
+                      Gasto média:{" "}
                       {new Intl.NumberFormat("pt-BR", {
                         style: "currency",
                         currency: "BRL",

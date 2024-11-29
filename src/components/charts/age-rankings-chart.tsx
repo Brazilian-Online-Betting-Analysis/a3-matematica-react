@@ -22,7 +22,7 @@ type DataPoint = {
 
 type AgeRankingsChartProps = {
   rankings: RankingsReturn["age_rankings"];
-  currentAge: number;
+  currentAge?: number;
 };
 
 export function AgeRankingsChart({
@@ -41,7 +41,7 @@ export function AgeRankingsChart({
 
   return (
     <div className="flex flex-col h-[300px]">
-      <h3 className="text-lg font-medium mb-4">Perdas por Idade</h3>
+      <h3 className="text-lg font-medium mb-4">Gastos por Idade</h3>
       <div className="min-h-[300px] h-[300px] relative flex-1">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
@@ -73,7 +73,7 @@ export function AgeRankingsChart({
                 return [
                   <>
                     <div>
-                      Perda média:{" "}
+                      Gasto médio:{" "}
                       {new Intl.NumberFormat("pt-BR", {
                         style: "currency",
                         currency: "BRL",
