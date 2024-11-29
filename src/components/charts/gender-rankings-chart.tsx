@@ -88,13 +88,12 @@ export function GenderRankingsChart({
             <Bar dataKey="average_loss" radius={[0, 4, 4, 0]} barSize={40}>
               <LabelList
                 dataKey="label"
-                position="inside"
+                position="top"
                 style={{
-                  fill: "white",
-                  color: "black",
+                  fill: "black",
+                  color: "white",
                   stroke: "none",
                   fontSize: 14,
-                  strokeDasharray: "0",
                 }}
               />
               {data.map((entry, index) => (

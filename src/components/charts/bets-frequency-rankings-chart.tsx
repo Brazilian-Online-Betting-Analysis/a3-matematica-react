@@ -92,16 +92,15 @@ export function BetsFrequencyRankingsChart({
               labelFormatter={(value) => `${value} vezes/semana`}
               {...tooltipStyles}
             />
-            <Bar dataKey="average_loss" radius={[4, 4, 0, 0]} barSize={40}>
+            <Bar dataKey="average_loss" radius={[4, 4, 0, 0]} barSize={100}>
               <LabelList
                 dataKey="label"
-                position="inside"
+                position="top"
                 style={{
-                  fill: "white",
-                  color: "black",
+                  fill: "black",
+                  color: "white",
                   stroke: "none",
                   fontSize: 14,
-                  strokeDasharray: "0",
                 }}
               />
               {data.map((entry, index) => (

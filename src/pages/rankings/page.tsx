@@ -20,7 +20,7 @@ export function RankingsPage() {
         <title>Rankings</title>
       </Helmet>
 
-      <main className="min-h-[calc(100vh-209px)] pb-32 pb-16 flex flex-col gap-12">
+      <main className="min-h-[calc(100vh-209px)] pb-32 flex flex-col gap-12">
         <div className="bg-gradient-to-r from-blue-600 to-blue-800 py-32">
           <div className="container">
             <h1 className="text-5xl font-bold text-white mb-6 flex items-center gap-2 inline-flex gap-4">

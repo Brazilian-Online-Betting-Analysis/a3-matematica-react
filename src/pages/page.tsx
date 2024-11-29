@@ -18,7 +18,7 @@ export function Home() {
 
       <header
         id="top"
-        className="-mt-16 flex flex-col h-[600px] justify-between relative after:content-[' '] after:absolute after:inset-0 after:z-[-1] after:bg-hero-fade text-white background-hero-fade"
+        className="-mt-16 flex flex-col h-[728px] justify-between relative after:content-[' '] after:absolute after:inset-0 after:z-[-1] after:bg-hero-fade text-white background-hero-fade"
       >
         <Hero />
       </header>
