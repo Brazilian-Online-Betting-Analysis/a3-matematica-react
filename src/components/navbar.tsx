@@ -215,7 +215,7 @@ export function Navbar() {
                     href="https://github.com/Brazilian-Online-Betting-Analysis/a3-matematica-react"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="transition-colors flex items-center justify-start gap-1"
+                    className="transition-colors flex items-center justify-start gap-2"
                   >
                     <GithubIcon className="size-4" /> Ver no GitHub{" "}
                   </a>
