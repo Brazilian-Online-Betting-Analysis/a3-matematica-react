@@ -80,7 +80,14 @@ export function MarketSituationChart() {
       </div>
 
       <p className="text-sm text-gray-500 mt-4 text-center">
-        Fonte: Instituto DataSenado (Data de acesso: 07/11/2024)
+        Fonte: Instituto DataSenado (Data de acesso: 07/11/2024) -{" "}
+        <a
+          href="https://www12.senado.leg.br/noticias/arquivos/2024/09/30/relatorio_apostasesportivas-golpesdigitais-endividamento-1.pdf"
+          target="_blank"
+          className="underline break-all"
+        >
+          https://www12.senado.leg.br/noticias/arquivos/2024/09/30/relatorio_apostasesportivas-golpesdigitais-endividamento-1.pdf
+        </a>
       </p>
     </div>
   );

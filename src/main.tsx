@@ -7,6 +7,8 @@ import { Layout } from "./pages/layout.tsx";
 import { ResultPage } from "./pages/result/[resultId]/page.tsx";
 import { DataPage } from "./pages/data/page.tsx";
 import { RankingsPage } from "./pages/rankings/page.tsx";
+import { OdsPage } from "./pages/ods/page.tsx";
+import { MathPage } from "./pages/math/page.tsx";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +30,14 @@ const router = createBrowserRouter([
       {
         path: "/rankings",
         element: <RankingsPage />,
+      },
+      {
+        path: "/ods",
+        element: <OdsPage />,
+      },
+      {
+        path: "/math",
+        element: <MathPage />,
       },
     ],
   },

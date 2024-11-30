@@ -8,6 +8,9 @@ import blobTopRight from "../assets/blob-top-right.png";
 import blobLeft from "../assets/blob-left.png";
 import dice from "../assets/dice.png";
 import odsImage from "../assets/ods.png";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import { ArrowRightIcon } from "lucide-react";
 
 export function Home() {
   return (
@@ -77,6 +80,15 @@ export function Home() {
                 <li>Consumo e Produção Responsáveis (12)</li>
                 <li>Paz, Justiça e Instituições Eficazes (16)</li>
               </ul>
+
+              <div>
+                <Button variant="link" asChild className="px-0">
+                  <Link to="/ods">
+                    Ver mais
+                    <ArrowRightIcon className="w-4 h-4" />
+                  </Link>
+                </Button>
+              </div>
             </div>
             <img
               className="h-auto md:h-[450px] w-auto rounded-lg"

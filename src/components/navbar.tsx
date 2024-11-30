@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { ResultsHistoryModal } from "./results-history-modal";
 import {
+  Calculator,
   ChartArea,
   HelpCircle,
   History,
@@ -95,6 +96,16 @@ export function Navbar() {
               Dados
             </NavLink>
           </li>
+          <li>
+            <NavLink
+              href="/math"
+              isScrolled={isScrolled}
+              isResultPage={isResultPage}
+            >
+              <Calculator className="size-4" />
+              Matemática
+            </NavLink>
+          </li>
 
           <li>
             <NavLink
@@ -102,7 +113,6 @@ export function Navbar() {
               isScrolled={isScrolled}
               isResultPage={isResultPage}
             >
-              {" "}
               <Trophy className="size-4" />
               Rankings
             </NavLink>

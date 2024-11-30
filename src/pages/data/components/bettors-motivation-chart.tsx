@@ -100,6 +100,17 @@ export function BettorsMotivationChart() {
           </BarChart>
         </ResponsiveContainer>
       </div>
+
+      <p className="text-sm text-gray-500 mt-4 text-center">
+        Fonte: Strategy& - PWC (Data de acesso: 07/11/2024) -{" "}
+        <a
+          href="https://www.strategyand.pwc.com/br/pt/relatorios/impacto_apostas_esportivas_consumo_pub_strategy_2024.pdf"
+          target="_blank"
+          className="underline break-all"
+        >
+          https://www.strategyand.pwc.com/br/pt/relatorios/impacto_apostas_esportivas_consumo_pub_strategy_2024.pdf
+        </a>
+      </p>
     </div>
   );
 }

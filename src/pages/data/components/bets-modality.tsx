@@ -78,7 +78,14 @@ export function BetsModalityChart() {
 
       <p className="text-sm text-gray-500 mt-4 text-center">
         Fonte: Pesquisa Sociedade Brasileira de Varejo e Consumo SBVC (Data de
-        acesso: 07/11/2024)
+        acesso: 07/11/2024) -{" "}
+        <a
+          href="https://sbvc.com.br/wp-content/uploads/2024/06/Pesquisa-SBVC-AGP-2024-v2.pdf"
+          target="_blank"
+          className="underline break-all"
+        >
+          https://sbvc.com.br/wp-content/uploads/2024/06/Pesquisa-SBVC-AGP-2024-v2.pdf
+        </a>
       </p>
     </div>
   );
