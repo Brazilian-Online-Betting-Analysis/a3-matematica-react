@@ -1,7 +1,5 @@
 import { Hero } from "@/components/hero";
 import { Helmet } from "react-helmet-async";
-import blobTopRight from "../assets/blob-top-right.png";
-import blobLeft from "../assets/blob-left.png";
 import dice from "../assets/dice.png";
 import odsImage from "../assets/ods.png";
 import { Link } from "react-router-dom";
@@ -54,12 +52,6 @@ export function Home() {
               <QuestionIllustration />
             </div>
           </div>
-
-          <img
-            src={blobTopRight}
-            alt="blob"
-            className="absolute -top-20 -right-10"
-          />
         </div>
         <div className="relative">
           <div className="container mx-auto">
@@ -81,12 +73,6 @@ export function Home() {
               </div>
             </div>
           </div>
-
-          <img
-            src={blobLeft}
-            alt="blob"
-            className="absolute top-1/2 -translate-y-1/2 -left-64"
-          />
         </div>
 
         <div>
