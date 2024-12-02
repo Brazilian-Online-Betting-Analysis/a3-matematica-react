@@ -2,6 +2,7 @@ import { Target } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import ods3Image from "@/assets/ods-3.png";
 import ods8Image from "@/assets/ods-8.png";
+import ods12Image from "@/assets/ods-12.png";
 import ods16Image from "@/assets/ods-16.png";
 import { Link } from "react-router-dom";
 
@@ -120,6 +121,34 @@ export function OdsPage() {
 
             <div className="flex justify-center">
               <img src={ods8Image} alt="ODS 8" className="max-h-[325px]" />
+            </div>
+          </div>
+        </section>
+        <section aria-labelledby="ods-12" className="container">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="bg-white rounded-lg flex flex-col gap-4">
+              <h2 className="text-4xl" id="ods-12">
+                Consumo e Produção Responsáveis (12)
+              </h2>
+              <div className="flex flex-col gap-2">
+                <h3 className="text-2xl">Problemas</h3>
+                <ul className="list-disc list-inside">
+                  <li>Alteração dos hábitos de consumo</li>
+                  <li>Propaganda intensa e acesso irrestrito</li>
+                  <li>Efeito de normalização</li>
+                </ul>
+              </div>
+              <div className="flex flex-col gap-2">
+                <h3 className="text-2xl">Soluções</h3>
+                <ul className="list-disc list-inside">
+                  <li>Campanhas de jogo responsável</li>
+                  <li>Limitações publicitárias</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="flex justify-center">
+              <img src={ods12Image} alt="ODS 16" className="max-h-[325px]" />
             </div>
           </div>
         </section>
