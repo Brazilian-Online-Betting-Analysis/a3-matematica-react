@@ -5,7 +5,7 @@ import {
   useEffect,
   useContext,
 } from "react";
-import { HistoryContextType, HistoryItem } from "./history-types";
+import { HistoryContextType, HistoryItem } from "./history-context.types";
 
 const HistoryContext = createContext<HistoryContextType | undefined>(undefined);
 
