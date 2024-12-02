@@ -110,8 +110,8 @@ export function Home() {
           </div>
         </div>
 
-        <div className="relative">
-          <div className="container mx-auto max-w-4xl">
+        <div className="relative container">
+          <div className="mx-auto max-w-4xl">
             <div
               id="time"
               className="flex items-center justify-between relative z-10 flex-col gap-8 md:gap-12"
@@ -131,13 +131,17 @@ export function Home() {
                   decisões seguras e conscientes no setor de apostas.
                 </p>
               </div>
-              <div className="md:max-w-[80%] flex justify-center items-center">
+              <div className="w-full md:max-w-[80%] flex justify-center items-center">
                 <GroupWorkingIllustration />
               </div>
             </div>
           </div>
 
-          <img src={dice} alt="dice" className="absolute top-2/3 left-0" />
+          <img
+            src={dice}
+            alt="dice"
+            className="absolute top-2/3 md:top-full -left-30 md:block hidden"
+          />
         </div>
       </main>
     </>
