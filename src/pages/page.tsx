@@ -140,7 +140,7 @@ export function Home() {
           <img
             src={dice}
             alt="dice"
-            className="absolute top-2/3 md:top-full -left-30 md:block hidden"
+            className="absolute top-2/3 -left-30 md:block hidden"
           />
         </div>
       </main>
