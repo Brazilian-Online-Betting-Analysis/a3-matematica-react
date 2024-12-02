@@ -16,11 +16,11 @@ export function OdsPage() {
       <main className="min-h-[calc(100vh-209px)] pb-32 flex flex-col gap-12 bg-gray-50">
         <div className="bg-gradient-to-r from-green-600 to-green-800 py-32">
           <div className="container">
-            <h1 className="text-6xl font-bold text-white mb-8 items-center inline-flex gap-4">
+            <h1 className="text-5xl font-bold text-white mb-8 items-center inline-flex gap-4">
               <Target className="size-14" />
               Impacto Social e ODS
             </h1>
-            <p className="text-2xl text-blue-50 max-w-2xl leading-relaxed">
+            <p className="text-xl text-blue-50 max-w-2xl">
               Perceba como as apostas afetam a sociedade e como se relacionam
               com os objetivos de desenvolvimento sustentável (ODS) da ONU.
             </p>
@@ -92,7 +92,7 @@ export function OdsPage() {
               <img
                 src={ods3Image}
                 alt="ODS 3"
-                className="max-h-[325px] group-hover:scale-105 transition-transform duration-300 rounded-xl rounded-xl"
+                className="max-h-[325px] group-hover:scale-105 transition-transform duration-300 rounded-xl"
               />
             </div>
           </div>
