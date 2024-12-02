@@ -1,50 +1,85 @@
-# React + TypeScript + Vite
+## Requisitos
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- Node.js 18.0.0 ou superior
+- NPM 9.0.0 ou superior
 
-Currently, two official plugins are available:
+### Variáveis de Ambiente
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Crie um arquivo `.env` na raiz do projeto com as seguintes variáveis:
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+VITE_PUBLIC_API_URL=http://localhost:3000
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Tecnologias
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- React 18
+- TypeScript
+- Vite
+- Recharts (para visualização de dados)
+- Tailwind CSS (para estilização)
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+## Funcionalidades
+
+- Visualização de dados demográficos dos apostadores:
+  - Distribuição por idade
+  - Distribuição por gênero
+  - Distribuição por classe social
+  - Nível de escolaridade
+
+- Análise comportamental:
+  - Frequência de apostas
+  - Motivações para apostar
+  - Resultados das apostas
+  - Impacto no consumo
+
+## Estrutura do Projeto
+
 ```
+src/
+  ├── components/     # Componentes reutilizáveis
+  │   └── charts/    # Componentes de visualização de dados
+  ├── pages/         # Páginas da aplicação
+  │   ├── data/      # Visualização de dados estatísticos
+  │   ├── ods/       # Objetivos de Desenvolvimento Sustentável
+  │   └── result/    # Página de resultados individuais
+  ├── services/      # Serviços e integrações
+  ├── contexts/      # Contextos React
+  └── assets/        # Recursos estáticos
+```
+
+## Desenvolvimento Local
+
+1. Clone o repositório
+
+```bash
+git clone https://github.com/Brazilian-Online-Betting-Analysis/a3-matematica-react.git
+cd a3-matematica-react
+```
+
+2. Instale as dependências:
+
+```bash
+npm install
+```
+
+3. Configure as variáveis de ambiente conforme descrito acima
+
+4. Inicie o servidor de desenvolvimento:
+
+```bash
+npm run dev
+```
+
+5. Acesse `http://localhost:5173`
+
+## Fontes de Dados
+
+Os dados apresentados nesta aplicação são provenientes de diversas fontes:
+- Instituto DataSenado
+- Strategy& - PWC
+- Sociedade Brasileira de Varejo e Consumo (SBVC)
+
+## Licença
+
+MIT
