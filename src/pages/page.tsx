@@ -1,16 +1,14 @@
-import placeholder from "../assets/placeholder.jpg";
-import imgComo from "../assets/Imagem-como.jpg";
-import grupoimg from "../assets/grupo-de-facebook.jpg";
 import { Hero } from "@/components/hero";
-import { FeatureSection } from "@/components/feature-section";
 import { Helmet } from "react-helmet-async";
 import blobTopRight from "../assets/blob-top-right.png";
 import blobLeft from "../assets/blob-left.png";
 import dice from "../assets/dice.png";
 import odsImage from "../assets/ods.png";
-import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowRightIcon } from "lucide-react";
+import { GroupWorkingIllustration } from "@/assets/group-working";
+import { QuestionIllustration } from "@/assets/question";
+import { MathIllustration } from "@/assets/math";
 
 export function Home() {
   return (
@@ -28,14 +26,33 @@ export function Home() {
       <main className="flex flex-col gap-32 pb-[280px] pt-32 overflow-x-hidden">
         <div className="relative">
           <div className="container mx-auto">
-            <FeatureSection
+            <div
               id="por-que"
-              direction="row"
-              title="Por que?"
-              description="Saber a probabilidade de quanto você pode perder em um jogo de aposta é essencial para tomar decisões mais informadas e gerenciar seu risco. Essa previsão ajuda a entender o valor esperado das apostas e o quanto você está realmente disposto a investir (ou perder) antes de alcançar seus objetivos financeiros. Ela também pode ajudar a evitar perdas significativas e descontrole financeiro, especialmente em apostas que podem ser atraentes mas com pouca chance de retorno. Em um contexto mais amplo, essa análise de probabilidade pode apoiar a criação de estratégias de apostas sustentáveis, definir limites de perda e até estabelecer um orçamento para apostas, o que ajuda a evitar comportamentos de risco ou viciantes."
-              image={placeholder}
-              imageWithShadow
-            />
+              className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-32 relative z-10"
+            >
+              <div className="text-content flex flex-col gap-3 md:gap-4">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">
+                  Por que?
+                </h2>
+                <p className="text-base sm:text-lg">
+                  Saber a probabilidade de quanto você pode perder em um jogo de
+                  aposta é essencial para tomar decisões mais informadas e
+                  gerenciar seu risco. Essa previsão ajuda a entender o valor
+                  esperado das apostas e o quanto você está realmente disposto a
+                  investir (ou perder) antes de alcançar seus objetivos
+                  financeiros. Ela também pode ajudar a evitar perdas
+                  significativas e descontrole financeiro, especialmente em
+                  apostas que podem ser atraentes mas com pouca chance de
+                  retorno. Em um contexto mais amplo, essa análise de
+                  probabilidade pode apoiar a criação de estratégias de apostas
+                  sustentáveis, definir limites de perda e até estabelecer um
+                  orçamento para apostas, o que ajuda a evitar comportamentos de
+                  risco ou viciantes.
+                </p>
+              </div>
+
+              <QuestionIllustration />
+            </div>
           </div>
 
           <img
@@ -46,15 +63,23 @@ export function Home() {
         </div>
         <div className="relative">
           <div className="container mx-auto">
-            <FeatureSection
+            <div
               id="como"
-              direction="row"
-              isInverted
-              title="Como?"
-              description="O propósito é gerar insights e previsões sobre o perfil dos apostadores, oferecendo uma base sólida para decisões informadas em políticas públicas e conscientização do público."
-              image={imgComo}
-              imageWithShadow
-            />
+              className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-32 relative z-10"
+            >
+              <MathIllustration />
+
+              <div className="text-content flex flex-col gap-3 md:gap-4">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">
+                  Como
+                </h2>
+                <p className="text-base sm:text-lg">
+                  O propósito é gerar insights e previsões sobre o perfil dos
+                  apostadores, oferecendo uma base sólida para decisões
+                  informadas em políticas públicas e conscientização do público.
+                </p>
+              </div>
+            </div>
           </div>
 
           <img
@@ -82,12 +107,13 @@ export function Home() {
               </ul>
 
               <div>
-                <Button variant="link" asChild className="px-0">
-                  <Link to="/ods">
-                    Ver mais
-                    <ArrowRightIcon className="w-4 h-4" />
-                  </Link>
-                </Button>
+                <Link
+                  to="/ods"
+                  className="flex items-center gap-2 text-primary-600 hover:text-primary-700 transition-colors duration-200 font-medium hover:underline"
+                >
+                  Saiba mais sobre os ODS do projeto
+                  <ArrowRightIcon className="w-5 h-5 animate-bounce-x" />
+                </Link>
               </div>
             </div>
             <img
@@ -100,15 +126,29 @@ export function Home() {
 
         <div className="relative">
           <div className="container mx-auto max-w-4xl">
-            <FeatureSection
+            <div
               id="time"
-              direction="column"
-              title="Nosso Time"
-              description="Somos um grupo de estudantes de Ciência da Computação da Universidade IBMR, unidos pela paixão por tecnologia e dados. Em nosso projeto atual, combinamos conhecimentos matemáticos e habilidades de programação para desenvolver um modelo de previsão de probabilidade de apostas. Nosso foco está em analisar variáveis ​​como faixa etária, classe social e gênero, para oferecer insights que possam contribuir para a tomada de decisões seguras e conscientes no setor de apostas."
-              image={grupoimg}
-              shouldCentralizeText
-              imageWithShadow
-            />
+              className="flex items-center justify-between relative z-10 flex-col gap-8 md:gap-12"
+            >
+              <div className="text-content flex flex-col gap-3 md:gap-4 text-center">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">
+                  Nosso Time
+                </h2>
+                <p className="text-base sm:text-lg">
+                  Somos um grupo de estudantes de Ciência da Computação da
+                  Universidade IBMR, unidos pela paixão por tecnologia e dados.
+                  Em nosso projeto atual, combinamos conhecimentos matemáticos e
+                  habilidades de programação para desenvolver um modelo de
+                  previsão de probabilidade de apostas. Nosso foco está em
+                  analisar variáveis como faixa etária, classe social e gênero,
+                  para oferecer insights que possam contribuir para a tomada de
+                  decisões seguras e conscientes no setor de apostas.
+                </p>
+              </div>
+              <div className="md:max-w-[80%] flex justify-center items-center">
+                <GroupWorkingIllustration />
+              </div>
+            </div>
           </div>
 
           <img src={dice} alt="dice" className="absolute top-2/3 left-0" />
