@@ -21,8 +21,11 @@ import {
 } from "./ui/sheet";
 import { Button } from "./ui/button";
 import { GithubIcon } from "./icons/github";
+import { useHistory } from "@/contexts/history-context";
 
 export function Navbar() {
+  const { history } = useHistory();
+
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const location = useLocation();
@@ -126,13 +129,15 @@ export function Navbar() {
               onOpenChange={setIsResultsHistoryModalOpen}
             />
 
-            <Button
-              variant="secondary"
-              size="icon"
-              onClick={() => setIsResultsHistoryModalOpen(true)}
-            >
-              <History className="size-4" />
-            </Button>
+            {history.length > 0 && (
+              <Button
+                variant="secondary"
+                size="icon"
+                onClick={() => setIsResultsHistoryModalOpen(true)}
+              >
+                <History className="size-4" />
+              </Button>
+            )}
           </div>
 
           <Sheet open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
@@ -200,14 +205,16 @@ export function Navbar() {
                   </NavLink>
                 </li>
 
-                <li>
-                  <button
-                    className="hover:underline hover:underline-offset-4 whitespace-nowrap text-slate-800 hover:text-slate-900 flex items-center gap-2"
-                    onClick={() => setIsResultsHistoryModalOpen(true)}
-                  >
-                    <History className="size-4" /> Histórico
-                  </button>
-                </li>
+                {history.length > 0 && (
+                  <li>
+                    <button
+                      className="hover:underline hover:underline-offset-4 whitespace-nowrap text-slate-800 hover:text-slate-900 flex items-center gap-2"
+                      onClick={() => setIsResultsHistoryModalOpen(true)}
+                    >
+                      <History className="size-4" /> Histórico
+                    </button>
+                  </li>
+                )}
 
                 <li>
                   <NavLink
