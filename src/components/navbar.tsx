@@ -58,7 +58,7 @@ export function Navbar() {
           isScrolled={isScrolled}
           isResultPage={isResultPage}
         >
-          Betting
+          Home
         </NavLink>
 
         {/* Desktop Navigation */}

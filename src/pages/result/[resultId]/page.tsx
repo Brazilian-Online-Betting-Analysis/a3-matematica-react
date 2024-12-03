@@ -67,7 +67,7 @@ export function ResultPage() {
   return (
     <>
       <Helmet>
-        <title>Perfil do Usuário</title>
+        <title>Resultado</title>
       </Helmet>
 
       <main className="pt-32 container min-h-[calc(100vh-209px)]">

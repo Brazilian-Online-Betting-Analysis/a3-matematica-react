@@ -12,7 +12,7 @@ export function Layout() {
       <Toaster />
       <ScrollToHashElement />
       <HelmetProvider>
-        <Helmet titleTemplate="%s | Bet" />
+        <Helmet />
 
         <Navbar />
 
