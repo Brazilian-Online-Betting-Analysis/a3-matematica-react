@@ -135,7 +135,7 @@ export const MathPage = () => {
 
             <p>
               Com R2=0,94, o modelo explica{" "}
-              <strong>93% da variação no gasto mensal</strong>, indicando que as
+              <strong>94% da variação no gasto mensal</strong>, indicando que as
               variáveis escolhidas têm forte impacto no comportamento de
               apostas. Os coeficientes permitem concluir, por exemplo, que maior
               renda e frequência de apostas estão associadas a gastos mais
