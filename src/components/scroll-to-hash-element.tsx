@@ -91,6 +91,11 @@ export function ScrollToHashElement({
           block: block,
         });
       }
+    } else {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
     }
   }, [hash, count, firstRun]);
 
