@@ -83,7 +83,7 @@ export function Navbar() {
           </li>
           <li>
             <NavLink
-              href="/#ods"
+              href="/ods"
               isScrolled={isScrolled}
               isResultPage={isResultPage}
             >
@@ -184,7 +184,7 @@ export function Navbar() {
                 </li>
                 <li>
                   <NavLink
-                    href="/#ods"
+                    href="/ods"
                     isScrolled={true}
                     isResultPage={isResultPage}
                     onClick={() => setIsDrawerOpen(false)}

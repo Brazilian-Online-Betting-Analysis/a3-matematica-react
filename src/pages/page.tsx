@@ -2,8 +2,6 @@ import { Hero } from "@/components/hero";
 import { Helmet } from "react-helmet-async";
 import dice from "../assets/dice.png";
 import odsImage from "../assets/ods.png";
-import { Link } from "react-router-dom";
-import { ArrowRightIcon } from "lucide-react";
 import { GroupWorkingIllustration } from "@/assets/group-working";
 import { QuestionIllustration } from "@/assets/question";
 import { MathIllustration } from "@/assets/math";
@@ -91,16 +89,6 @@ export function Home() {
                 <li>Consumo e Produção Responsáveis (12)</li>
                 <li>Paz, Justiça e Instituições Eficazes (16)</li>
               </ul>
-
-              <div>
-                <Link
-                  to="/ods"
-                  className="flex items-center gap-2 text-primary-600 hover:text-primary-700 transition-colors duration-200 font-medium hover:underline"
-                >
-                  Saiba mais sobre os ODS do projeto
-                  <ArrowRightIcon className="w-5 h-5 animate-bounce-x" />
-                </Link>
-              </div>
             </div>
             <img
               className="h-auto md:h-[450px] w-auto rounded-lg"
