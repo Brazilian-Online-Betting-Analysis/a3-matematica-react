@@ -46,7 +46,7 @@ export const MathPage = () => {
               Este estudo utiliza a <strong>regressão linear múltipla</strong>,
               uma ferramenta estatística poderosa, para investigar como
               variáveis socioeconômicas e comportamentais afetam o gasto mensal
-              com apostas. Com um coeficiente de determinação (R2) de 0,93, o
+              com apostas. Com um coeficiente de determinação (R2) de 0,94, o
               modelo apresenta alta capacidade explicativa, revelando
               importantes insights sobre o comportamento dos apostadores.
               Equação da regressão linear múltipla, representada por Ŷ:
@@ -134,7 +134,7 @@ export const MathPage = () => {
             </h3>
 
             <p>
-              Com R2=0,93, o modelo explica{" "}
+              Com R2=0,94, o modelo explica{" "}
               <strong>93% da variação no gasto mensal</strong>, indicando que as
               variáveis escolhidas têm forte impacto no comportamento de
               apostas. Os coeficientes permitem concluir, por exemplo, que maior
